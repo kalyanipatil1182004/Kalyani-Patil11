@@ -212,8 +212,14 @@
       });
 
       loginForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-      });
+  event.preventDefault();
+
+  const submitButton = document.querySelector(".submit-button");
+
+  submitButton.textContent = "Logging in...";
+  submitButton.disabled = true;
+});
+
     </script>
   </body>
 </html>
