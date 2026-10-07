@@ -1,219 +1,454 @@
+
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
+    <title>QLOAX LLP | Login</title>
+
     <style>
-      :root {
-        color-scheme: light;
-        font-family: Arial, sans-serif;
-        background: #f3f6fb;
-        color: #1f2937;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        min-height: 100vh;
-        margin: 0;
-        display: grid;
-        place-items: center;
-        padding: 24px;
-      }
-
-      .login-card {
-        width: min(100%, 400px);
-        padding: 36px;
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 12px 36px rgb(31 41 55 / 10%);
-      }
-
-      h1 {
-        margin: 0 0 8px;
-        color: #111827;
-        font-size: 24px;
-        text-align: left;
-      }
-
-      h1 span {
-        padding: 2px 6px;
-        background: #111827;
-        color: #fff;
-      }
-
-      .subtitle {
-        margin: 0 0 28px;
-        color: #64748b;
-        text-align: center;
-      }
-
-      .field {
-        margin-bottom: 20px;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 8px;
-        font-size: 14px;
-        font-weight: 600;
-      }
-
-      .field:first-child label {
-        color: #2563eb;
-      }
-
-      input {
-        width: 100%;
-        min-height: 46px;
-        padding: 11px 12px;
-        border: 1px solid #cbd5e1;
-        border-radius: 8px;
-        font: inherit;
-      }
-
-      input:focus {
-        border-color: #2563eb;
-        outline: 3px solid rgb(37 99 235 / 16%);
-      }
-
-      .password-wrap {
-        position: relative;
-      }
-
-      .password-wrap input {
-        padding-right: 48px;
-      }
-
-      .password-toggle {
-        position: absolute;
-        top: 50%;
-        right: 8px;
-        display: grid;
-        width: 34px;
-        height: 34px;
-        place-items: center;
-        transform: translateY(-50%);
-        border: 0;
-        border-radius: 6px;
-        background: transparent;
-        color: #64748b;
-        cursor: pointer;
-      }
-
-      .password-toggle:hover {
-        background: #f1f5f9;
-      }
-
-      .password-toggle:focus-visible,
-      .submit-button:focus-visible {
-        outline: 3px solid rgb(37 99 235 / 35%);
-        outline-offset: 2px;
-      }
-
-      .password-toggle svg {
-        width: 20px;
-        height: 20px;
-        fill: none;
-        stroke: currentColor;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 1.8;
-      }
-
-      .submit-button {
-        width: 100%;
-        min-height: 46px;
-        margin-top: 4px;
-        border: 0;
-        border-radius: 8px;
-        background: #2563eb;
-        color: #fff;
-        font: inherit;
-        font-weight: 600;
-        cursor: pointer;
-      }
-
-      .submit-button:hover {
-        background: #1d4ed8;
-      }
-
-      @media (max-width: 420px) {
-        .login-card {
-          padding: 28px 22px;
+        :root {
+            font-family: Arial, sans-serif;
+            --primary: #7c3aed;
+            --dark-purple: #5b21b6;
+            --accent: #9333ea;
+            --light-purple: #f5f3ff;
+            --border: #e2e8f0;
+            --muted: #64748b;
+            --success: #15803d;
+            --error: #dc2626;
         }
-      }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            background:
+                radial-gradient(circle at top left, #ede9fe 0, transparent 35%),
+                linear-gradient(135deg, #f5f3ff, #ede9fe);
+        }
+
+        /* Login Card */
+        .login-card {
+            width: min(100%, 420px);
+            padding: 36px;
+            background: #ffffff;
+            border: 1px solid #ddd6fe;
+            border-radius: 18px;
+            box-shadow: 0 20px 50px #5b21b61f, 0 4px 12px #0f172a0d;
+        }
+
+        /* Brand */
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .brand-icon {
+            display: grid;
+            width: 44px;
+            height: 44px;
+            place-items: center;
+            border-radius: 11px;
+            background: linear-gradient(135deg, var(--accent), var(--dark-purple));
+            color: #fff;
+            box-shadow: 0 8px 18px #7c3aed33;
+        }
+
+        .brand-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .brand-name {
+            margin: 0;
+            color: var(--dark-purple);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .brand-name span {
+            color: var(--accent);
+        }
+
+        /* Heading */
+        h1 {
+            margin: 0 0 7px;
+            color: #1e293b;
+            font-size: 27px;
+        }
+
+        .subtitle {
+            margin: 0 0 25px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Form */
+        .field {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--dark-purple);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .input-wrap,
+        .password-wrap {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            left: 13px;
+            width: 17px;
+            height: 17px;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .input-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+        }
+
+        input {
+            width: 100%;
+            height: 46px;
+            padding: 10px 40px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            font: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px #7c3aed1a;
+        }
+
+        input.input-error {
+            border-color: var(--error);
+        }
+
+        input.input-success {
+            border-color: var(--success);
+        }
+
+        /* Password */
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 7px;
+            width: 34px;
+            height: 34px;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            color: #64748b;
+            cursor: pointer;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary);
+            background: var(--light-purple);
+            border-radius: 6px;
+        }
+
+        .password-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+        }
+
+        .password-help {
+            margin-top: 7px;
+            padding: 8px 10px;
+            border-radius: 7px;
+            background: #f8fafc;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .password-help strong {
+            display: block;
+            color: #475569;
+        }
+
+        /* Error Message */
+        .error-message {
+            display: none;
+            margin-top: 6px;
+            color: var(--error);
+            font-size: 12px;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Forgot Password */
+        .password-options {
+            text-align: right;
+            margin: -5px 0 18px;
+        }
+
+        .forgot-password {
+            border: 0;
+            background: none;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        /* Login Button */
+        .submit-button {
+            width: 100%;
+            height: 46px;
+            border: 0;
+            border-radius: 9px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: #fff;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 18px #7c3aed33;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(135deg, var(--primary), var(--dark-purple));
+            transform: translateY(-1px);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Security Note */
+        .security-note {
+            text-align: center;
+            margin-top: 18px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .login-card {
+                padding: 28px 22px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
+
     <main class="login-card">
-      <h1>QLOAX <span>LLP</span></h1>
-      <p class="subtitle">Welcome back! Please sign in.</p>
 
-      <form id="login-form">
-        <div class="field">
-          <label for="username">Login name</label>
-          <input
-            id="username"
-            name="username"
-            type="text"
-            autocomplete="username"
-            placeholder="Enter your login name"
-            required
-          >
+        <!-- Brand -->
+        <div class="brand">
+            <div class="brand-icon">
+                <svg viewBox="0 0 24 24">
+                    <rect x="5" y="10" width="14" height="10" rx="2" />
+                    <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                </svg>
+            </div>
+
+            <p class="brand-name">
+                QLOAX <span>LLP</span>
+            </p>
         </div>
 
-        <div class="field">
-          <label for="password">Password</label>
-          <div class="password-wrap">
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autocomplete="current-password"
-              placeholder="Enter your password"
-              required
-            >
-            <button
-              class="password-toggle"
-              id="password-toggle"
-              type="button"
-              aria-label="Show password"
-              aria-pressed="false"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg>
+        <!-- Heading -->
+        <h1>Welcome Back</h1>
+        <p class="subtitle">Sign in to continue to your account.</p>
+
+        <!-- Login Form -->
+        <form id="login-form" novalidate>
+
+            <!-- Email -->
+            <div class="field">
+                <label for="username">Email Address</label>
+
+                <div class="input-wrap">
+                    <span class="input-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="5" width="18" height="14" rx="2" />
+                            <path d="m3 7 9 6 9-6" />
+                        </svg>
+                    </span>
+
+                    <input
+                        id="username"
+                        type="email"
+                        placeholder="Enter your email"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div id="email-error" class="error-message">
+                    Please enter a valid email address.
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="field">
+                <label for="password">Password</label>
+
+                <div class="password-wrap">
+                    <span class="input-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="5" y="10" width="14" height="10" rx="2" />
+                            <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                        </svg>
+                    </span>
+
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        class="password-toggle"
+                        id="password-toggle"
+                        type="button"
+                        aria-label="Show password"
+                    >
+                        <svg viewBox="0 0 24 24">
+                            <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="password-help">
+                    <strong>Password requirements</strong>
+                    At least 6 characters, one uppercase and one lowercase letter.
+                </div>
+
+                <div id="password-error" class="error-message">
+                    Password does not meet the requirements.
+                </div>
+            </div>
+
+            <!-- Forgot Password -->
+            <div class="password-options">
+                <button
+                    class="forgot-password"
+                    id="forgot-password"
+                    type="button"
+                >
+                    Forgot password?
+                </button>
+            </div>
+
+            <!-- Login Button -->
+            <button class="submit-button" type="submit">
+                Log in
             </button>
-          </div>
+
+        </form>
+
+        <div class="security-note">
+            🔒 Secure sign-in
         </div>
 
-        <button class="submit-button" type="submit">Log in</button>
-      </form>
     </main>
 
     <script>
-      const passwordInput = document.querySelector("#password");
-      const passwordToggle = document.querySelector("#password-toggle");
-      const loginForm = document.querySelector("#login-form");
+        const email = document.querySelector("#username");
+        const password = document.querySelector("#password");
+        const toggle = document.querySelector("#password-toggle");
+        const form = document.querySelector("#login-form");
+        const button = document.querySelector(".submit-button");
+        const emailError = document.querySelector("#email-error");
+        const passwordError = document.querySelector("#password-error");
 
-      passwordToggle.addEventListener("click", () => {
-        const isPasswordHidden = passwordInput.type === "password";
-        passwordInput.type = isPasswordHidden ? "text" : "password";
-        passwordToggle.setAttribute("aria-pressed", String(isPasswordHidden));
-        passwordToggle.setAttribute(
-          "aria-label",
-          isPasswordHidden ? "Hide password" : "Show password"
-        );
-      });
+        /* Show / Hide Password */
+        toggle.onclick = () => {
+            const hidden = password.type === "password";
 
-      loginForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-      });
+            password.type = hidden ? "text" : "password";
+
+            toggle.setAttribute(
+                "aria-label",
+                hidden ? "Hide password" : "Show password"
+            );
+        };
+
+        /* Forgot Password */
+        document.querySelector("#forgot-password").onclick = () => {
+            alert("Password reset functionality will be available soon.");
+        };
+
+        /* Login Validation */
+        form.onsubmit = (e) => {
+            e.preventDefault();
+
+            const validEmail =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+
+            const validPassword =
+                /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password.value);
+
+            emailError.classList.toggle("show", !validEmail);
+            passwordError.classList.toggle("show", !validPassword);
+
+            email.classList.toggle("input-error", !validEmail);
+            email.classList.toggle("input-success", validEmail);
+
+            password.classList.toggle("input-error", !validPassword);
+            password.classList.toggle("input-success", validPassword);
+
+            if (validEmail && validPassword) {
+                button.textContent = "Logging in...";
+                button.disabled = true;
+            }
+        };
     </script>
-  </body>
+
+</body>
 </html>
